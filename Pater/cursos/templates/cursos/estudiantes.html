@@ -1,0 +1,21 @@
+{% extends 'cursos/base.html' %}
+{% load static %}
+
+{% block presentacion %}
+<header>
+    <h1 class="site-heading text-center text-faded d-none d-lg-block">
+        <span class="site-heading-upper text-primary mb-3">Nuestros-estudiantes</span>
+    </h1>
+</header>
+{% endblock presentacion %}
+
+{% block contenido %}
+
+{% block titulo %}
+    <title>Estudiantes</title>
+{% endblock titulo %}
+    {% for alumnos in estudiantes  %}
+    <p style="color: white;">.{{alumnos.nombre}}</p>
+    {% endfor %}
+
+{% endblock contenido %}

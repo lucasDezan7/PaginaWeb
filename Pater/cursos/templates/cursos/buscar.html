@@ -1,0 +1,31 @@
+{% extends 'cursos/base.html' %}
+{% load static %}
+{% block contenido %}
+<p style="color: white;">Buscando {{nombre}} en la pagina... </p>
+{% if cursos %}
+<ul>
+    {% for curso in cursos  %}
+    <li style="color: white;">{{curso.nombre}}</li>
+    <li style="color: white;">{{curso.camada}}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p style="color: white;">El curso ingresado no existe</p>
+{% endif %}
+<p style="color: white;">{{respuesta}}</p>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Curso no encontrado</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'cursos/assets/favicon.ico' %}" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'cursos/css/styles.css' %}" rel="stylesheet" />
+</head
+
+{% endblock contenido %}

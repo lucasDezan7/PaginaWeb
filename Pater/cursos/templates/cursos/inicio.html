@@ -1,0 +1,50 @@
+{% extends 'cursos/base.html' %}
+
+{% load static %}
+
+{% block presentacion %}
+<header>
+    <h1 class="site-heading text-center text-faded d-none d-lg-block">
+        <span class="site-heading-upper text-primary mb-3">Bienvenidos a nuestro pagina de aprendizaje</span>
+        <span class="site-heading-lower">Pater</span>
+    </h1>
+</header>
+{% endblock presentacion %}
+
+{% block contenido %}
+
+
+{% block titulo %}
+<title>Nuesta-Universidad</title>
+{% endblock titulo %}
+
+<section class="page-section clearfix">
+    <div class="container">
+        <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'cursos/assets/img/intro.jpg' %}" alt="..." />
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper">Cursos!</span>
+                </h2>
+                <p class="mb-3">cursos 100% pensados para aprender la logica y sintaxis de diversos lenguajes de programacion!</p>
+                <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="{% url 'estudiantes' %}">Alumnos estudiando con Pater</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-upper">Gracias por visitarnos</span>
+                    </h2>
+                    <p class="mb-0">Universidad Pater una lugar para todos!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock contenido %}
