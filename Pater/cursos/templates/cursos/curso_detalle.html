@@ -1,0 +1,12 @@
+{% extends 'cursos/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<h1 style="color: white;">Curso Detalle</h1>
+
+<p style="color: white;">Nombre del curso: <i>{{cursos.nombre}}</i></p>
+<p style="color: white;">camada: <i>{{cursos.camada}}</i></p>
+<p>
+    <a href="{% url 'ListarCursos' %}"></a>
+</p>
+{% endblock contenido %}

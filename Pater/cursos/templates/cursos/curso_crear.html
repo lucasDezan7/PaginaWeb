@@ -1,0 +1,12 @@
+{% extends 'cursos/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<h1 style="color: white;">Crear Curso</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Crear">
+</form>
+{% endblock contenido %}

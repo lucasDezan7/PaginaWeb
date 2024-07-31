@@ -1,27 +1,20 @@
 {% extends 'cursos/base.html' %}
-
 {% load static %}
-
-{% block presentacion %}
-<header>
-    <h1 class="site-heading text-center text-faded d-none d-lg-block">
-        <span class="site-heading-upper text-primary mb-3">Cursos Disponibles</span>
-        <span class="site-heading-lower">Clases todos los dias!</span>
-    </h1>
-</header>
-{% endblock presentacion %}
-
-
-
 {% block contenido %}
-{% block titulo %}
-<title>Cursos-Disponibles</title>
-{% endblock titulo %}
-    {% for curso in cursos  %}
-        <p style="color: white;">.{{curso.nombre}} | {{curso.camada}}</p>
-    {% endfor %}
 
+<h1 style="color: white;">Lista de Cursos</h1>
+
+<a href="{% url 'NuevoCurso' %}">Nuevo Curso</a>
+{% for curso in cursos  %}
+
+<li style="color: white;">Nombre: {{curso.nombre}}
+    <p>
+        <a href="{% url 'DetalleCurso' curso.pk %}">Ver</a>
+        <a href="{% url 'EditarCurso' curso.pk %}">Editar</a>
+        <a href="{% url 'BorrarCurso' curso.pk %}">Borrar</a>
+    </p>
+
+</li>
+
+{% endfor %}
 {% endblock contenido %}
-
-
-

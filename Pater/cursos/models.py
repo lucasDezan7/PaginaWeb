@@ -6,7 +6,7 @@ class Cursos(models.Model):
     camada = models.IntegerField()
 
     def __str__(self):
-        return self.nombre
+        return f'Nombre:{self.nombre} | Camada:{self.camada}'
 
 class Estudiantes(models.Model):
     nombre = models.CharField(max_length=40)
@@ -14,7 +14,7 @@ class Estudiantes(models.Model):
     mail = models.EmailField(max_length=40)
 
     def __str__(self):
-        return self.nombre
+        return f'Nombre:{self.nombre} | Apellido:{self.apellido}'
     
 
 class Profesor(models.Model):
@@ -22,8 +22,7 @@ class Profesor(models.Model):
     apellido = models.CharField(max_length=20)
     mail = models.EmailField(max_length=40)
 
-class Entregables(models.Model):
-    nombre = models.CharField(max_length=40)
-    fecha_de_entrega = models.DateField()
-    entregado = models.BooleanField()   
+    def __str__(self):
+        return f'Nombre del profesor:{self.nombre}'
+   
 

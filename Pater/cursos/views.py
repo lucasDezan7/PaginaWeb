@@ -1,7 +1,9 @@
 from django.shortcuts import render, HttpResponse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from cursos.models import Cursos, Profesor, Estudiantes
 from cursos.forms import *
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -12,6 +14,27 @@ class CursoListView(ListView):
     model = Cursos
     context_object_name = 'cursos'
     template_name = 'cursos/listar.html'
+
+class CursoDetailView(DetailView):
+    model = Cursos
+    template_name = 'cursos/curso_detalle.html'
+
+class CursoCreateView(CreateView):
+    model = Cursos
+    template_name = 'cursos/curso_crear.html'
+    success_url = reverse_lazy('ListarCursos')
+    fields = ['nombre', 'camada']
+
+class CursoUpdateView(UpdateView):
+    model = Cursos
+    template_name = 'cursos/curso_editar.html'
+    success_url = reverse_lazy('ListarCursos')
+    fields = ['nombre','camada']
+
+class CursoDeleteView(DeleteView):
+    model = Cursos
+    template_name = 'cursos/curso_borrar.html'
+    success_url = reverse_lazy('ListarCursos')
 
 
 class ProfesoresListView(ListView):
