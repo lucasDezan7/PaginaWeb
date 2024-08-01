@@ -4,13 +4,15 @@ from cursos.models import Cursos, Profesor, Estudiantes
 from cursos.forms import *
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 
 def inicio(respuesta):
     return render(respuesta,'cursos/inicio.html')
 
-class CursoListView(ListView):
+class CursoListView( LoginRequiredMixin,ListView):
     model = Cursos
     context_object_name = 'cursos'
     template_name = 'cursos/listar.html'
