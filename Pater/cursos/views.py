@@ -9,8 +9,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
-def inicio(respuesta):
-    return render(respuesta,'cursos/inicio.html')
+def inicio(request):
+    return render(request,'cursos/inicio.html')
 
 class CursoListView( LoginRequiredMixin,ListView):
     model = Cursos
@@ -51,64 +51,64 @@ class EstudiantesListView(ListView):
     template_name = 'cursos/estudiantes.html'
 
 
-def busquedaCamada(resquest):
-    return render(resquest, 'cursos/buscarCurso.html')
+def busquedaCamada(request):
+    return render(request, 'cursos/buscarCurso.html')
 
-def busquedaProfesor(respuesta):
-    return render(respuesta, 'cursos/buscarProfesor.html')
+def busquedaProfesor(request):
+    return render(request, 'cursos/buscarProfesor.html')
 
-def buscar(respuesta):
-    if respuesta.GET['nombre']:
-        nombre = respuesta.GET['nombre']
+def buscar(request):
+    if request.GET['nombre']:
+        nombre = request.GET['nombre']
         cursos = Cursos.objects.filter(nombre__icontains = nombre)
 
-        return render(respuesta, 'cursos/buscar.html', {'cursos':cursos, 'nombre':nombre})
+        return render(request, 'cursos/buscar.html', {'cursos':cursos, 'nombre':nombre})
     else:
-        respuesta = 'no enviaste datos'
-    return HttpResponse(respuesta)
+        request = 'no enviaste datos'
+    return HttpResponse(request)
 
-def buscarProfesor(respuesta):
-    if respuesta.GET['nombre']:
-        nombre = respuesta.GET['nombre']
+def buscarProfesor(request):
+    if request.GET['nombre']:
+        nombre = request.GET['nombre']
         profesor = Profesor.objects.filter(nombre__icontains = nombre)
 
-        return render(respuesta, 'cursos/buscarr.html', {'profesor':profesor, 'nombre':nombre})
+        return render(request, 'cursos/buscarr.html', {'profesor':profesor, 'nombre':nombre})
     else:
-        respuesta = 'no enviaste datos'
-    return HttpResponse(respuesta)
+        request = 'no enviaste datos'
+    return HttpResponse(request)
 
 
 
-def profesorFormulario(resquest):
+def profesorFormulario(request):
 
-    if resquest.method == 'POST':
+    if request.method == 'POST':
 
-        miFormulario = ProfesorFormulario(resquest.POST)
+        miFormulario = ProfesorFormulario(request.POST)
         print(miFormulario)
 
         if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
             profesor = Profesor(nombre=informacion['nombre'], apellido=informacion['apellido'], mail=informacion['mail'])
             profesor.save()
-            return render(resquest, 'cursos/profesores.html')
+            return render(request, 'cursos/profesores.html')
     else:
         miFormulario = ProfesorFormulario()
     
-    return render(resquest, 'cursos/agregarprofesor.html',{"miFormulario":miFormulario})
+    return render(request, 'cursos/agregarprofesor.html',{"miFormulario":miFormulario})
 
-def estudiantesFormulario(resquest):
+def estudiantesFormulario(request):
 
-    if resquest.method == 'POST':
+    if request.method == 'POST':
 
-        miFormulario = EstudiantesFormulario(resquest.POST)
+        miFormulario = EstudiantesFormulario(request.POST)
         print(miFormulario)
 
         if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
             profesor = Estudiantes(nombre=informacion['nombre'], apellido=informacion['apellido'], mail=informacion['mail'])
             profesor.save()
-            return render(resquest, 'cursos/estudiantes.html')
+            return render(request, 'cursos/estudiantes.html')
     else:
         miFormulario = EstudiantesFormulario()
     
-    return render(resquest, 'cursos/agregarestudiantes.html',{"miFormulario":miFormulario})
+    return render(request, 'cursos/agregarestudiantes.html',{"miFormulario":miFormulario})

@@ -5,3 +5,4 @@ from cursos.models import *
 admin.site.register(Cursos)
 admin.site.register(Profesor)
 admin.site.register(Estudiantes)
+
